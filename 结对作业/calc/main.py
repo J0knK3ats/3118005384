@@ -17,22 +17,15 @@ def write_file(expr_set, ans_set, exp_file, ans_file):
 
 
 if __name__ == '__main__':
-
+    
     parser = argparse.ArgumentParser(description="四则运算")
-    parser.add_argument('-n', dest='number', type=int, default=1000, help='生成题目的个数')
-    parser.add_argument('-r', dest='range', type=int, default=10, help='数字范围')
+    parser.add_argument('-n', dest='number', type=int, required=True, help='生成题目的个数')
+    parser.add_argument('-r', dest='range', type=int, required=True, help='数字范围')
     parser.add_argument('-e', dest='exercise', type=str, help='给定题目文件')
     parser.add_argument('-a', dest='answer', type=str, help='给定答案文件')
     parser.add_argument('-g', dest='grade', type=str, help='输出答案文件')
     args = parser.parse_args()
-
-    if args.range is None:
-        print("必须输入 -r 限制题目中数值范围")
-        exit()
-    if args.number is None:
-        print("必须输入 -n 选择输出题目数量")
-        exit()
-
+    #必须输入-r -n参数
     if args.exercise is None:
         args.exercise = os.path.join(os.getcwd(), 'Exercises.txt')
     if args.answer is None:
